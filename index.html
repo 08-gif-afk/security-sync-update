@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Account | Sign In</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f2f2f2; margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .card { background: white; padding: 40px; width: 100%; max-width: 440px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin: 15px; }
+        .logo { width: 108px; margin-bottom: 20px; }
+        h1 { font-size: 24px; font-weight: 600; margin: 0 0 12px 0; color: #1b1b1b; }
+        input { width: 100%; border: none; border-bottom: 1px solid #666; padding: 10px 0; margin-bottom: 20px; outline: none; font-size: 16px; border-radius: 0; }
+        input:focus { border-bottom: 2px solid #0067b8; }
+        .btn { background: #0067b8; color: white; border: none; padding: 10px 36px; cursor: pointer; float: right; font-weight: 600; }
+        #gotcha-screen { display: none; text-align: center; }
+        .punchline { color: #d11; font-size: 48px; font-weight: 900; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="card" id="login-screen">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" class="logo">
+        <h1>Sign in</h1>
+        <p style="font-size: 15px;">To continue troubleshooting, please verify your account.</p>
+        <form id="trap">
+            <input type="email" placeholder="Email, phone, or Skype" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit" class="btn">Next</button>
+        </form>
+    </div>
+
+    <div class="card" id="gotcha-screen">
+        <div class="punchline">GOTCHA DAD!</div>
+        <p style="font-size: 18px; color: #333;">You just fell for a fake email!</p>
+        <button onclick="location.reload()" class="btn" style="float:none; margin-top:20px;">Back</button>
+    </div>
+
+    <script>
+        document.getElementById('trap').onsubmit = function(e) {
+            e.preventDefault();
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('gotcha-screen').style.display = 'block';
+        };
+    </script>
+</body>
+</html>
+
